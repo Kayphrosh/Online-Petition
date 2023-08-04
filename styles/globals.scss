@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import 'variable';
+
+
+@font-face {
+  font-family: 'Futura-Light';
+  src: url('../public/font/Futura\ Light\ font.ttf') format('truetype');
+  /* You can add more src entries for different font formats like woff and woff2 if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura-Medium';
+  src: url('../public/font/futura\ medium\ bt.ttf') format('truetype');
+  /* You can add more src entries for different font formats like woff and woff2 if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura-Bold';
+  src: url('../public/font/Futura\ Bold\ font.ttf') format('truetype');
+  /* You can add more src entries for different font formats like woff and woff2 if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura-Book';
+  src: url('../public/font/Futura\ Book\ font.ttf') format('truetype');
+  /* You can add more src entries for different font formats like woff and woff2 if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Futura-Medium';
+  font-size: 16px;
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background: none;
+  font-family: 'Futura-Medium';
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
