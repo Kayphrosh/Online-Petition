@@ -1,45 +1,44 @@
-import React from 'react'
+import React from "react";
 
 const Heroe = () => {
   return (
-    <div className='heroe-container'>
-        <main className='main-content'>           
-            <div className='heroe-text'>
-            <span>
-            Your Petition Management App
-            </span>
+    <div className="heroe-container">
+      <main className="main-content">
+        <div className="heroe-text">
+          <span>Your Appeal Management App</span>
 
-            <div className='text'>
-                <h2>
-                PetitionPower: <br/> Empowering Voices, Amplifying Change!
-                </h2>
-                <img src="/Images/heroeText.svg" alt="" />
-            </div>
+          <div className="text">
+            <h2>
+              AppealEase: <br /> Empower Your Appeal, Simplify Your Success
+            </h2>
+            <img src="/Images/heroeText.svg" alt="" />
+          </div>
 
-            <p className='paragraph'>
-                Unleash the power of petitions with ease. Create, manage, and promote your causes effortlessly, uniting voices for meaningful change. Empower yourself and others to make a difference, one signature at a time.
-            </p>
+          <p className="paragraph">
+            Revolutionizing appeal management, AppealEase is a streamlined web
+            app that simplifies submission, tracking, and resolution processes
+            for educational institutions, fostering transparent communication
+            and efficiency.
+          </p>
 
-            <div className='cta-btn'>
+          <div className="cta-btn">
+            <button id="btn1">
+              <img src="/Images/plusIcon.svg" alt="" />
+              <p>Start An Appeal</p>
+            </button>
 
-                <button id='btn1'>
-                <img src="/Images/plusIcon.svg" alt="" />
-                <p>Start A Petition</p>
-                </button>
+            <button id="btn2">
+              <img src="/Images/scrollIcon.svg" alt="" />
+            </button>
+          </div>
+        </div>
 
-                <button id='btn2'>
-                <img src="/Images/scrollIcon.svg" alt="" />
-                </button>
-
-            </div>
-            </div>
-
-            <div className='illustration'>
-                <img src="/Images/heroeIllustration.svg" alt="" />
-            </div>
-        </main>
+        <div className="illustration">
+          <img src="/Images/heroeIllustration.svg" alt="" />
+        </div>
+      </main>
     </div>
-  )
-}
+  );
+};
 
-export default Heroe
+export default Heroe;

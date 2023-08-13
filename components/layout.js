@@ -1,14 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const layout = ({children}) => {
-
-    const session = React.useContext(MyStore);
-    const { disconnect } = useDisconnect();
+const layout = ({ children }) => {
+  const session = React.useContext(MyStore);
+  const { disconnect } = useDisconnect();
   return (
     <ssction>
-        <main> {children}</main>
+      <main> {children}</main>
     </ssction>
-  )
-}
+  );
+};
 
-export default layout
+export default layout;
