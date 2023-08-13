@@ -41,6 +41,16 @@ const SignUp = ({ onClose }) => {
           </span>
           <button type="submit">Submit</button>
 
+          <span>
+            <input type='checkbox'></input>
+            <p>
+              I have read and agreed to the
+            </p>
+            <a>
+              Terms and Conditions
+            </a>
+          </span>
+
           <p>
             {" "}
             Don’t have an account yet? <a>Create An Account</a>{" "}
