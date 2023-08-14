@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import SignUp from "@/pages/Login_SignUp/SignUp";
-import Login from "@/pages/Login_SignUp/Login";
+import Authentication from "@/pages/authentication";
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -13,14 +11,6 @@ const Navbar = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-  };
-
-  const openLoginModal = () => {
-    setIsLoginModalOpen(true);
-  };
-
-  const closeLoginModal = () => {
-    setIsLoginModalOpen(false);
   };
 
   useEffect(() => {
@@ -59,14 +49,16 @@ const Navbar = () => {
           <img src="/Images/searchIcon.svg" alt="" />
         </button>
 
-        <button id="btn2">
-          <a href="/create_appeal">Start Your Appeal</a>
-        </button>
+        <a href="/create_appeal">
+          <button id="btn2">Start Your Appeal </button>
+        </a>
       </div>
 
-      {isModalOpen && <SignUp onClose={closeModal} />}
+      {isModalOpen && (
+        <Authentication isModalOpen={isModalOpen} onClose={closeModal} />
+      )}
 
-      {isLoginModalOpen && <Login onLoginClose={closeLoginModal} />}
+      {/* {isLoginModalOpen && <Login onLoginClose={closeLoginModal} />} */}
     </div>
   );
 };

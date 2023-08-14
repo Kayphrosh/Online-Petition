@@ -105,14 +105,11 @@
       height: 49px;
       border-radius: 49px;
       border: none;
-
-      a {
-        color: $secondaryColor !important;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-      }
+      color: $secondaryColor !important;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
     }
     #btn2:hover {
       background: $brandColor2;

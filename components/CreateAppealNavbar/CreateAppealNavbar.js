@@ -1,6 +1,7 @@
 import React from 'react'
 
 const CreateAppealNavbar = () => {
+    
   return (
     <div className='appeal-navbar'>
       

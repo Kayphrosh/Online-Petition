@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import AppealCreatedModal from "./appealCreatedModal";
 
 const StepFour = () => {
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+
+  const openSuccessModal = () => {
+    setIsSuccessModalOpen(true);
+  };
+
+  const closeSuccessModal = () => {
+    setIsSuccessModalOpen(false);
+  };
+
   return (
     <section className="appeal-form-container">
       <div className="form-steps-container">
@@ -69,7 +80,7 @@ const StepFour = () => {
       <main>
         <h3 className="title">Set A Goal</h3>
 
-        <form>
+        <div className="form-container">
           <span>
             <label>Title</label>
             <select type="text" placeholder="Enter your appeal title" />
@@ -78,10 +89,19 @@ const StepFour = () => {
           <div className="form-cta">
             <button id="previous">Previous</button>
 
-            <button id="next">Continue</button>
+            <button id="next" onClick={openSuccessModal}>
+              Continue
+            </button>
           </div>
-        </form>
+        </div>
       </main>
+
+      {isSuccessModalOpen && (
+        <AppealCreatedModal
+          isSuccessOpen={isSuccessModalOpen}
+          onCloseModal={closeSuccessModal}
+        />
+      )}
     </section>
   );
 };
