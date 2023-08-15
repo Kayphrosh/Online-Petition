@@ -9,9 +9,9 @@ const CreateAppeal = () => {
   return (
     <div>
       <CreateAppealNavbar />
-      {/* <StepOne />
+      <StepOne />
       <StepTwo />
-      <StepThree /> */}
+      <StepThree />
       <StepFour />
     </div>
   );

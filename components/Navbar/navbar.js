@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Authentication from "@/pages/authentication";
-
+import { useRouter } from "next/router";
 const Navbar = () => {
+  const router = useRouter();
   const [scrolling, setScrolling] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -38,10 +39,13 @@ const Navbar = () => {
       </div>
 
       <ul className="nav-links">
-        <li className="active-link">Home</li>
-        <li>Explore</li>
-        <li>FAQ</li>
-        <li onClick={openModal}>Login</li>
+        <li className="active-link" onClick={() => router.push("/")}>
+          Home
+        </li>
+
+        <li onClick={() => router.push("/appeals")}>Explore</li>
+
+        <li onClick={openModal}>Sign Up/Login</li>
       </ul>
 
       <div className="cta-btn">
