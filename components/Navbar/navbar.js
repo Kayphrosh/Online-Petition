@@ -49,7 +49,7 @@ const Navbar = () => {
       </ul>
 
       <div className="cta-btn">
-        <button id="btn1">
+        <button type="text" id="btn1">
           <img src="/Images/searchIcon.svg" alt="" />
         </button>
 

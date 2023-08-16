@@ -1,6 +1,11 @@
 import React from "react";
 
-const StepThree = () => {
+const StepThree = ({ formData, setFormData, onNext, onPrevious }) => {
+  const handleInputChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
+
   return (
     <section className="appeal-form-container">
       <div className="form-steps-container">
@@ -69,11 +74,18 @@ const StepThree = () => {
       <main>
         <h3 className="title">Involved Party Details</h3>
 
-        <form>
+        <div className="form-container">
           <div className="fullName">
             <span>
               <label>First Name</label>
-              <input type="text" placeholder="Enter your first name" />
+              <input
+                type="text"
+                placeholder="Enter your first name"
+                value={formData.involved_parties}
+                onChange={(e) =>
+                  handleInputChange("involved_parties", e.target.value)
+                }
+              />
             </span>
 
             <span>
@@ -98,11 +110,15 @@ const StepThree = () => {
           </span>
 
           <div className="form-cta">
-            <button id="previous">Previous</button>
+            <button id="previous" onClick={onPrevious}>
+              Previous
+            </button>
 
-            <button id="next">Continue</button>
+            <button id="next" onClick={onNext}>
+              Continue
+            </button>
           </div>
-        </form>
+        </div>
       </main>
     </section>
   );

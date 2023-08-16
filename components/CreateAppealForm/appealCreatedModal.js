@@ -1,14 +1,19 @@
 import React from "react";
-
-const AppealCreatedModal = ({ onCloseModal, isSuccessOpen }) => {
-  if (!isSuccessOpen) return null;
+const AppealCreatedModal = ({ onSuccessCloseModal, isSuccessModalOpen }) => {
+  if (!isSuccessModalOpen) return null;
   const stopPropagation = (event) => {
     event.stopPropagation();
   };
   return (
-    <div className="signup-container" onClick={onCloseModal}>
+    <div
+      isOpen={isSuccessModalOpen}
+      onRequestClose={onSuccessCloseModal}
+      contentLabel="Success Modal"
+      className="signup-container"
+      onClick={onSuccessCloseModal}
+    >
       <div className="modal-main">
-        <div className="closeBtn" onClick={onCloseModal}>
+        <div className="closeBtn" onClick={onSuccessCloseModal}>
           <img src="/Images/closeIcon.svg" alt="" />
         </div>
 
@@ -23,8 +28,8 @@ const AppealCreatedModal = ({ onCloseModal, isSuccessOpen }) => {
         </div>
 
         <div className="modal-cta">
-            <button id="share-btn">Copy Appeal Link</button>
-            <button id="go-to-dashboard"> Go To Dashboard</button>
+          <button id="share-btn">Copy Appeal Link</button>
+          <button id="go-to-dashboard"> Go To Dashboard</button>
         </div>
       </div>
     </div>

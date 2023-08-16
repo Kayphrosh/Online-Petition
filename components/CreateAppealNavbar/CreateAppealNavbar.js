@@ -1,11 +1,17 @@
 import React from 'react'
+import { useRouter } from 'next/router';
 
 const CreateAppealNavbar = () => {
-    
+
+    const router = useRouter();
+
+  const goBack = () => {
+    router.back();
+  };
   return (
     <div className='appeal-navbar'>
       
-      <button className='exit-btn'>
+      <button className='exit-btn' onClick={goBack}>
         <img src="/Images/exitIcon.svg" alt="" />
         <p> Exit</p>
       </button>

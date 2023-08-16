@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "@/components/Navbar/navbar";
-
+import Explore from "@/components/Explore/exploreData";
 const appeals = () => {
+
+  
   return (
     <div className="explore-container">
       <Navbar />
@@ -23,6 +25,8 @@ const appeals = () => {
           <img src="/Images/searchIcon.svg" alt="" />
         </div>
       </div>
+
+      <Explore />
     </div>
   );
 };

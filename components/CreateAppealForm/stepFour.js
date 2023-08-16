@@ -1,17 +1,31 @@
 import React, { useState } from "react";
 import AppealCreatedModal from "./appealCreatedModal";
+// import api from "../../pages/api/appealSubmission/formSubmit";
+const StepFour = ({ formData, setFormData, onNext, onPrevious }) => {
+  const handleInputChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
 
-const StepFour = () => {
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-
-  const openSuccessModal = () => {
-    setIsSuccessModalOpen(true);
+      console.log("StepFour formData:", formData); 
   };
-
-  const closeSuccessModal = () => {
-    setIsSuccessModalOpen(false);
-  };
-
+  console.log("StepFour formData:", formData); 
+  // const handleSubmit = async () => {
+  //   try {
+  //     const response = await fetch("/api/submit", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     if (response.ok) {
+  //       onNext(); // Move to the next step upon successful submission
+  //     } else {
+  //       // Handle error
+  //     }
+  //   } catch (error) {
+  //     // Handle error
+  //   }
+  // };
   return (
     <section className="appeal-form-container">
       <div className="form-steps-container">
@@ -82,26 +96,32 @@ const StepFour = () => {
 
         <div className="form-container">
           <span>
-            <label>Title</label>
-            <select type="text" placeholder="Enter your appeal title" />
+            <label>Signature Range</label>
+            <select
+              type="text"
+              placeholder="Enter your appeal title"
+              value={formData.required_signatures_range}
+              onChange={(e) =>
+                handleInputChange("required_signatures_range", e.target.value)
+              }
+            >
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
           </span>
 
           <div className="form-cta">
-            <button id="previous">Previous</button>
+            <button id="previous" onClick={onPrevious}>
+              Previous
+            </button>
 
-            <button id="next" onClick={openSuccessModal}>
+            <button id="next" onClick={onNext}>
               Continue
             </button>
           </div>
         </div>
       </main>
-
-      {isSuccessModalOpen && (
-        <AppealCreatedModal
-          isSuccessOpen={isSuccessModalOpen}
-          onCloseModal={closeSuccessModal}
-        />
-      )}
     </section>
   );
 };

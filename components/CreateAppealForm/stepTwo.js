@@ -1,6 +1,9 @@
 import React from "react";
 
-const StepTwo = () => {
+const StepTwo = ({ formData, setFormData, onNext, onPrevious }) => {
+    const handleInputChange = (field, value) => {
+      setFormData({ ...formData, [field]: value });
+    };
   return (
     <section className="appeal-form-container">
       <div className="form-steps-container">
@@ -69,22 +72,28 @@ const StepTwo = () => {
       <main>
         <h3 className="title">Case Description</h3>
 
-        <form>
+        <div className="form-container">
           <span>
-            <label>Title</label>
+            <label>Description</label>
             <textarea
               name="description"
               placeholder="Enter description of your appeal"
               rows="10"
+              value={formData.description}
+              onChange={(e) => handleInputChange("description", e.target.value)}
             />
           </span>
 
           <div className="form-cta">
-            <button id="previous">Previous</button>
+            <button id="previous" onClick={onPrevious}>
+              Previous
+            </button>
 
-            <button id="next">Continue</button>
+            <button id="next" onClick={onNext}>
+              Continue
+            </button>
           </div>
-        </form>
+        </div>
       </main>
     </section>
   );

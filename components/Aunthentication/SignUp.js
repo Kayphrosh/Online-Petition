@@ -10,7 +10,7 @@ const SignUp = ({ onClose, toggleModals }) => {
   const [last_name, setLastName] = useState("");
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
-
+  
   const handleSignup = async (e) => {
     e.preventDefault();
     const validationErrors = {};
@@ -38,23 +38,31 @@ const SignUp = ({ onClose, toggleModals }) => {
       });
       console.log("Account created successfully!", response.data);
 
+ {
       // Show toast notification
       toast.success("Sign Up successful!", {
         position: toast.POSITION.TOP_RIGHT,
       });
 
-      
       // Close the modal
       onClose();
+    }
       // Redirect or perform other actions on successful signup
     } catch (error) {
       console.error("Signup error:", error.response?.data);
-      
+
+          if (error.response?.data?.message === "Email is already signed up") {
+      toast.error("This email is already signed up!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+      onClose();
     } finally {
       // Whether success or error, stop the submission process
       setSubmitting(false);
     }
   };
+
   return (
     <div className="modal-main">
       <div className="modal-title">
@@ -72,6 +80,7 @@ const SignUp = ({ onClose, toggleModals }) => {
             <input
               type="text"
               placeholder="Enter your first name"
+              required
               value={first_name}
               onChange={(e) => setFirstName(e.target.value)}
             />
@@ -84,6 +93,7 @@ const SignUp = ({ onClose, toggleModals }) => {
             <input
               type="text"
               placeholder="Enter your last name"
+              required
               value={last_name}
               onChange={(e) => setLastName(e.target.value)}
             />
@@ -98,6 +108,7 @@ const SignUp = ({ onClose, toggleModals }) => {
           <input
             type="text"
             placeholder="Enter your email address"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -108,13 +119,16 @@ const SignUp = ({ onClose, toggleModals }) => {
           <label>Password</label>
           <input
             type="password"
-            placeholder="******"
+            placeholder=""
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           {errors.password && <div className="error">{errors.password}</div>}
         </span>
-        <button type="submit">{submitting ? "signing up..." : "Sign Up"}</button>
+        <button type="submit">
+          {submitting ? "signing up..." : "Sign Up"}
+        </button>
 
         <p>
           Already have an account yet? <a onClick={toggleModals}> Login</a>{" "}
@@ -125,3 +139,4 @@ const SignUp = ({ onClose, toggleModals }) => {
 };
 
 export default SignUp;
+

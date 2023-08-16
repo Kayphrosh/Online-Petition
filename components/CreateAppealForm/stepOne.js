@@ -1,6 +1,10 @@
 import React from "react";
 
-const StepOne = () => {
+const StepOne = ({ formData, setFormData, onNext, onPrevious }) => {
+
+    const handleInputChange = (field, value) => {
+      setFormData({ ...formData, [field]: value });
+    };
   return (
     <section className="appeal-form-container">
       <div className="form-steps-container">
@@ -69,18 +73,28 @@ const StepOne = () => {
       <main>
         <h3 className="title">Write Your Appeal Title</h3>
 
-        <form>
+        <div className="form-container">
           <span>
             <label>Title</label>
-            <input type="text" placeholder="Enter your appeal title" />
+            <input
+              type="text"
+              placeholder="Enter your appeal title"
+              value={formData.title}
+              required
+              onChange={(e) => handleInputChange("title", e.target.value)}
+            />
           </span>
 
           <div className="form-cta">
-            <button id="previous">Previous</button>
+            <button id="previous" onClick={onPrevious}>
+              Previous
+            </button>
 
-            <button id="next">Continue</button>
+            <button id="next" onClick={onNext}>
+              Continue
+            </button>
           </div>
-        </form>
+        </div>
       </main>
     </section>
   );
