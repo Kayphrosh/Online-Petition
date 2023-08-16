@@ -1,80 +1,102 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import Authentication from "@/pages/authentication";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 const Navbar = () => {
-  const router = useRouter();
-  const [scrolling, setScrolling] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+    const router = useRouter();
+    const [scrolling, setScrolling] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-const handleAuthentication = () => {
-  closeModal();
-  setIsAuthenticated(true); // Set the user as authenticated
-  console.log("User is authenticated:", isAuthenticated); // Check the value
-  router.push("/dashboard");
-};
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
+    const openModal = () => {
+        setIsModalOpen(true);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
-  }, []);
+    const handleAuthentication = () => {
+        closeModal();
+        setIsAuthenticated(true);
+    };
 
-  return (
-    <div className={`navbar ${scrolling ? "scrolling" : ""}`}>
-      <div className="logo">
-        <h4>
-          <span id="petition">Appeal</span>
-          <span id="power">Ease</span>
-        </h4>
-      </div>
 
-      <ul className="nav-links">
-        <li className="active-link" onClick={() => router.push("/")}>
-          Home
-        </li>
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setScrolling(true);
+            } else {
+                setScrolling(false);
+            }
+        };
 
-        <li onClick={() => router.push("/appeals")}>Explore</li>
+        window.addEventListener("scroll", handleScroll);
+        return() => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
-        {/* <li onClick={openModal}>Sign Up/Login</li> */}
-                <li onClick={isAuthenticated ? () => router.push("/dashboard") : openModal}>
-          {isAuthenticated ? "Dashboard" : "Sign Up/Login"}
-        </li>
-      </ul>
+    const handleDashboardClick = () => {
+        if (isAuthenticated) {
+            router.push("/dashboard");
+        } else {
+            openModal();
+        }
+    };
 
-      <div className="cta-btn">
-        <button type="text" id="btn1">
-          <img src="/Images/searchIcon.svg" alt="" />
-        </button>
+    return (
+        <div className={
+            `navbar ${
+                scrolling ? "scrolling" : ""
+            }`
+        }>
+            <div className="logo">
+                <h4>
+                    <span id="petition">Appeal</span>
+                    <span id="power">Ease</span>
+                </h4>
+            </div>
 
-        <a href="/create_appeal">
-          <button id="btn2">Start Your Appeal </button>
-        </a>
-      </div>
+            <ul className="nav-links">
+                <li className="active-link"
+                    onClick={
+                        () => router.push("/")
+                }>
+                    Home
+                </li>
 
-      {isModalOpen && (
-        <Authentication isModalOpen={isModalOpen} onClose={closeModal} onAuthentication={handleAuthentication} />
-      )}
+                <li onClick={
+                    () => router.push("/appeals")
+                }>Explore</li>
 
-      {/* {isLoginModalOpen && <Login onLoginClose={closeLoginModal} />} */}
-    </div>
-  );
+                {/* <li onClick={openModal}>Sign Up/Login</li> */}
+                <li onClick={handleDashboardClick}>
+                    {
+                    isAuthenticated ? "Dashboard" : "Sign Up/Login"
+                } </li>
+
+            </ul>
+
+            <div className="cta-btn">
+                <button type="text" id="btn1">
+                    <img src="/Images/searchIcon.svg" alt=""/>
+                </button>
+
+                <a href="/create_appeal">
+                    <button id="btn2">Start Your Appeal
+                    </button>
+                </a>
+            </div>
+
+            {
+            isModalOpen && (
+                <Authentication isModalOpen={isModalOpen}
+                    onClose={closeModal}
+                    onAuthentication={handleAuthentication}/>
+            )
+        }
+
+            {/* {isLoginModalOpen && <Login onLoginClose={closeLoginModal} />} */} </div>
+    );
 };
 
 export default Navbar;

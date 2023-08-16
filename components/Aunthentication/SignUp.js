@@ -3,7 +3,7 @@ import axios from "axios";
 import { isEmailValid, isPasswordValid } from "./validation";
 import { toast } from "react-toastify";
 
-const SignUp = ({ onClose, toggleModals }) => {
+const SignUp = ({ onClose, toggleModals, onAuthentication }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [first_name, setFirstName] = useState("");
@@ -45,7 +45,9 @@ const SignUp = ({ onClose, toggleModals }) => {
       });
 
       // Close the modal
-      onClose();
+      // onClose();
+onAuthentication();
+
     }
       // Redirect or perform other actions on successful signup
     } catch (error) {
