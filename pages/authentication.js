@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SignUp from "@/components/Aunthentication/SignUp";
 import Login from "@/components/Aunthentication/Login";
 
-const Authentication = ({ onClose }) => {
+const Authentication = ({ onClose, onAuthentication }) => {
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(true);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
@@ -16,7 +16,7 @@ const Authentication = ({ onClose }) => {
         <SignUp toggleModals={toggleModals} onClose={onClose} />
       )}
       {isLoginModalOpen && (
-        <Login onClose={onClose} toggleModals={toggleModals} />
+        <Login onClose={onClose} toggleModals={toggleModals} onAuthentication={onAuthentication}/>
       )}
     </div>
   );

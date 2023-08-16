@@ -5,7 +5,7 @@ const Navbar = () => {
   const router = useRouter();
   const [scrolling, setScrolling] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -13,6 +13,13 @@ const Navbar = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+const handleAuthentication = () => {
+  closeModal();
+  setIsAuthenticated(true); // Set the user as authenticated
+  console.log("User is authenticated:", isAuthenticated); // Check the value
+  router.push("/dashboard");
+};
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +52,10 @@ const Navbar = () => {
 
         <li onClick={() => router.push("/appeals")}>Explore</li>
 
-        <li onClick={openModal}>Sign Up/Login</li>
+        {/* <li onClick={openModal}>Sign Up/Login</li> */}
+                <li onClick={isAuthenticated ? () => router.push("/dashboard") : openModal}>
+          {isAuthenticated ? "Dashboard" : "Sign Up/Login"}
+        </li>
       </ul>
 
       <div className="cta-btn">
@@ -59,7 +69,7 @@ const Navbar = () => {
       </div>
 
       {isModalOpen && (
-        <Authentication isModalOpen={isModalOpen} onClose={closeModal} />
+        <Authentication isModalOpen={isModalOpen} onClose={closeModal} onAuthentication={handleAuthentication} />
       )}
 
       {/* {isLoginModalOpen && <Login onLoginClose={closeLoginModal} />} */}

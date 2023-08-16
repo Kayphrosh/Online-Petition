@@ -3,7 +3,7 @@ import axios from "axios";
 import { isEmailValid, isPasswordValid } from "./validation";
 import { toast } from "react-toastify";
 
-const Login = ({ onClose, toggleModals }) => {
+const Login = ({ onClose, toggleModals,onAuthentication }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -24,7 +24,7 @@ const Login = ({ onClose, toggleModals }) => {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
-    }
+        }
 
     // Start the submission process
     setSubmitting(true);
@@ -38,8 +38,8 @@ const Login = ({ onClose, toggleModals }) => {
         position: toast.POSITION.TOP_RIGHT,
       });
       // Close the modal
-      onClose();
-
+      // onClose();
+    onAuthentication();
       // Redirect or perform other actions on successful login
     } catch (error) {
       console.error("Login error:", error.response?.data);
